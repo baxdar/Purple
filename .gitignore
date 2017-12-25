@@ -1,6 +1,3 @@
-/Library
-/Temp
-*.meta
-/.vs/Purple/v14/*.suo
-/*.csproj
-/*.sln
+/[Ll]ibrary/
+/[Tt]emp/
+/.vs/
