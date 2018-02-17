@@ -7,12 +7,10 @@ public class Char : MonoBehaviour {
     private Rigidbody2D charRigidBody;
     private Vector2 movement;
 
-	// Use this for initialization
 	void Start () {
         charRigidBody = GetComponent<Rigidbody2D>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
