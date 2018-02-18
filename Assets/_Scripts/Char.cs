@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Char : MonoBehaviour {
-    public float movespeed = 8;
+    public float movespeed = 5;
     private Rigidbody2D charRigidBody;
     private Vector2 movement;
 
@@ -14,6 +14,7 @@ public class Char : MonoBehaviour {
 	void Update () {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
+        transform.rotation = new Quaternion();
     }
 
     private void FixedUpdate() {
