@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Purple", "Purple.csproj", "{2F491DF2-97DE-8ED1-A7DC-E1A3BEE74ECB}"
 EndProject
 Global
