@@ -81,6 +81,8 @@ MonoBehaviour:
   PrimaryAttackObject: {fileID: 1958891267435416, guid: 5d1644a734072bd4396dbf0b05531592,
     type: 2}
   SpecialAttackObject: {fileID: 0}
+  PrimaryAttackCooldown: 0.5
+  SpecialAttackCooldown: 3
 --- !u!212 &212186788108638446
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Char : MonoBehaviour {
+    public Entity.Health healthstat = new Entity.Health(15);
     public Weapon EquippedWeapon;
-    public int Health = 10;
     public int Damage = 1;
-    public int AttackSpeed;
+    public int AttackSpeed = 1;
     public float movespeed = 5;
+    public float chance = 5;
+    public float luck = 0;
     private Rigidbody2D charRigidBody;
     private Vector2 movement;
 
 	void Start () {
         charRigidBody = GetComponent<Rigidbody2D>();
+        healthstat.DamageDelegate += TestDamage;
 	}
+
+    public void TestDamage() {
+        Debug.Log("oof");
+    }
 	
 	void Update () {
         movement.x = Input.GetAxis("Horizontal");
@@ -23,6 +30,9 @@ public class Char : MonoBehaviour {
         }
         if (Input.GetButton("Fire2")) {
             EquippedWeapon.SpecialAttack();
+        }
+        if (Input.GetButton("Submit")) {
+            healthstat.DamageDelegate();
         }
         transform.rotation = new Quaternion();
     }

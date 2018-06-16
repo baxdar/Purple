@@ -5,9 +5,13 @@ using UnityEngine;
 public class Shortsword : Weapon {
 
     public override void PrimaryAttack() {
-        Vector3 StashedPosition = transform.position;
-        StashedPosition.y += .5f;
-        Instantiate(PrimaryAttackObject, StashedPosition, new Quaternion());
+        float fakescaling = 0f;
+        if (PrimaryAttackReady) {
+           StartCoroutine(primarycooldown(fakescaling));
+           Vector3 StashedPosition = transform.position;
+           StashedPosition.y += .625f;
+           Instantiate(PrimaryAttackObject, StashedPosition, new Quaternion());
+        }
     }
 
     public override void SpecialAttack() {
