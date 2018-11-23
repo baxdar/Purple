@@ -20,4 +20,12 @@ public class Attack : MonoBehaviour {
         display = GetComponent<SpriteRenderer>();
         DestroyAttack();
     }
+
+    public void OnCollisionEnter2D(Collision2D collision) {
+        Enemy temp = collision.transform.GetComponent<Enemy>();
+        if (temp != null) {
+            
+        }
+
+    }
 }

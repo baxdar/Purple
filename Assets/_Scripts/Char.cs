@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Char : MonoBehaviour {
-    public Entity.Health healthstat = new Entity.Health(15);
-    public Weapon EquippedWeapon;
+public class Char : Entity {
+    public Weapon PrimaryWeapon;
+    public Weapon SecondaryWeapon;
     public int Damage = 1;
     public int AttackSpeed = 1;
     public float movespeed = 5;
@@ -15,29 +13,35 @@ public class Char : MonoBehaviour {
 
 	void Start () {
         charRigidBody = GetComponent<Rigidbody2D>();
-        healthstat.DamageDelegate += TestDamage;
+        Health = new HealthClass(10);
+        Health.DamageDelegate += TestDamage;
 	}
 
     public void TestDamage() {
-        Debug.Log("oof");
+        Debug.Log("oof : " + Health.Value);
     }
 	
 	void Update () {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
-        if (Input.GetButton("Fire1")) {
-            EquippedWeapon.PrimaryAttack();
+        if (Input.GetButton("Fire1") && PrimaryWeapon != null) {
+            PrimaryWeapon.AttackMethod();
         }
-        if (Input.GetButton("Fire2")) {
-            EquippedWeapon.SpecialAttack();
+        if (Input.GetButton("Fire2") && SecondaryWeapon != null) {
+            SecondaryWeapon.AttackMethod();
         }
-        if (Input.GetButton("Submit")) {
-            healthstat.DamageDelegate();
+        if (Input.GetButtonDown("Submit")) {
+            Debug.Log(Health.Value);
         }
         transform.rotation = new Quaternion();
     }
 
     private void FixedUpdate() {
         charRigidBody.velocity = new Vector2(movement.x * movespeed, movement.y * movespeed);
+    }
+
+    public override void Die() {
+        //play death anim or revive
+        throw new System.NotImplementedException();
     }
 }
